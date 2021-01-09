@@ -1,21 +1,19 @@
 package com.leylihashimova.ctis417.calculator.core;
 
-import java.nio.CharBuffer;
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 public class ExpressionParser {
     private static ExpressionParser instance;
 
+    private ExpressionParser() {
+    }
+
     public static synchronized ExpressionParser getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new ExpressionParser();
         }
 
         return instance;
-    }
-
-    private ExpressionParser() {
     }
 
     public Expression parseInput(String input) throws CalculatorException {

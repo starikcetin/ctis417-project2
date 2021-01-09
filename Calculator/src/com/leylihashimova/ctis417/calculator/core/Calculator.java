@@ -1,7 +1,7 @@
 package com.leylihashimova.ctis417.calculator.core;
 
 import com.leylihashimova.ctis417.calculator.io.InputObserver;
-import com.leylihashimova.ctis417.calculator.operations.*;
+import com.leylihashimova.ctis417.calculator.operations.Operation;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -9,9 +9,9 @@ import java.util.Stack;
 
 public class Calculator extends InputObserver {
     private static Calculator instance;
-    private double lastResult = 0;
     private final Stack<Operation> history = new Stack<>();
     private final NumberFormat doubleFormatter = new DecimalFormat("#0.00");
+    private double lastResult = 0;
 
     private Calculator() {
     }
