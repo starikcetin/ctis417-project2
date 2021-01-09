@@ -13,6 +13,15 @@ public class Calculator extends InputObserver {
     private Operation lastOperation = null;
     private NumberFormat doubleFormatter = new DecimalFormat("#0.00");
 
+    public double getLastResult() {
+        return lastResult;
+    }
+
+    public void setLastResult(double lastResult) {
+        this.lastResult = lastResult;
+        output();
+    }
+
     private static Calculator instance;
 
     public synchronized static Calculator getInstance() {

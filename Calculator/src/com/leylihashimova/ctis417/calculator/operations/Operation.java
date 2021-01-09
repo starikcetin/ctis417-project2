@@ -29,7 +29,8 @@ public abstract class Operation {
             case "+":
                 return new AdditionOperation(operand);
             case "-":
-                return new SubtractionOperation(operand);
+                var subtractionPerformer = new SubtractionPerformer();
+                return new SubtractionPerformerOperationAdapter(subtractionPerformer, operand);
             case "*":
                 return new MultiplicationOperation(operand);
             case "/":
