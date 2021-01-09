@@ -16,7 +16,7 @@ public class SubtractionPerformerOperationAdapter extends Operation {
         var left = Calculator.getInstance().getLastResult();
         var result = subtractionPerformer.perform(left, operand);
         Calculator.getInstance().setLastResult(result);
-        Calculator.getInstance().setLastOperation(this);
+        Calculator.getInstance().addToHistory(this);
     }
 
     @Override
@@ -24,6 +24,5 @@ public class SubtractionPerformerOperationAdapter extends Operation {
         var left = Calculator.getInstance().getLastResult();
         var result = subtractionPerformer.performInverse(left, operand);
         Calculator.getInstance().setLastResult(result);
-        Calculator.getInstance().setLastOperation(this);
     }
 }

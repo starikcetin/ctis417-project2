@@ -6,11 +6,11 @@ import com.leylihashimova.ctis417.calculator.io.OutputEventBus;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Stack;
 
 public class Calculator extends InputObserver {
-    //En son gelen sonuc
     private double lastResult = 0;
-    private Operation lastOperation = null;
+    private Stack<Operation> history = new Stack<>();
     private NumberFormat doubleFormatter = new DecimalFormat("#0.00");
 
     public double getLastResult() {
@@ -20,6 +20,19 @@ public class Calculator extends InputObserver {
     public void setLastResult(double lastResult) {
         this.lastResult = lastResult;
         output();
+    }
+
+    public void addToHistory(Operation operation) {
+        history.push(operation);
+    }
+
+    private void undoLastOperation() throws CalculatorException {
+        var op = history.pop();
+        op.undo();
+    }
+
+    public void ignoreLastOperationFromHistory() {
+        history.pop();
     }
 
     private static Calculator instance;
@@ -33,10 +46,6 @@ public class Calculator extends InputObserver {
     }
 
     private Calculator() {}
-
-    public void setLastOperation(Operation lastOperation) {
-        this.lastOperation = lastOperation;
-    }
 
     public void add(double number) {
         lastResult += number;
@@ -53,7 +62,11 @@ public class Calculator extends InputObserver {
         output();
     }
 
-    public void divide(double number) {
+    public void divide(double number) throws CalculatorException {
+        if(number == 0) {
+            throw new CalculatorException("Division cannot take 0 as operand.");
+        }
+
         lastResult /= number;
         output();
     }
@@ -83,11 +96,11 @@ public class Calculator extends InputObserver {
 
     private void processInput(String cleaned) throws CalculatorException {
         if(cleaned.equals("undo")) {
-            if(lastOperation == null) {
+            if(history.empty()) {
                 throw new CalculatorException("You need to perform an operation before undoing.");
             }
 
-            lastOperation.undo();
+            undoLastOperation();
         } else {
             var operation = Operation.create(cleaned);
             operation.calculate();

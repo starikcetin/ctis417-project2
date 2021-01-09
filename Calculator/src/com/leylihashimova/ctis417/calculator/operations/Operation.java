@@ -1,5 +1,6 @@
 package com.leylihashimova.ctis417.calculator.operations;
 
+import com.leylihashimova.ctis417.calculator.core.Calculator;
 import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
 import java.util.Arrays;
@@ -32,7 +33,13 @@ public abstract class Operation {
                 var subtractionPerformer = new SubtractionPerformer();
                 return new SubtractionPerformerOperationAdapter(subtractionPerformer, operand);
             case "*":
-                return new MultiplicationOperation(operand);
+                var operation = new MultiplicationOperation(operand);
+
+                if(operand == 0) {
+                    return new RestoreStateOnUndoOperationDecorator(operand, operation, Calculator.getInstance().getLastResult());
+                } else {
+                    return operation;
+                }
             case "/":
                 return new DivisionOperation(operand);
         }

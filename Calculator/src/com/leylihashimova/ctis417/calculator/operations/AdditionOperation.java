@@ -10,12 +10,11 @@ public class AdditionOperation extends Operation {
     @Override
     public void calculate() {
         Calculator.getInstance().add(operand);
-        Calculator.getInstance().setLastOperation(this);
+        Calculator.getInstance().addToHistory(this);
     }
 
     @Override
     public void undo() {
         Calculator.getInstance().subtract(operand);
-        Calculator.getInstance().setLastOperation(null);
     }
 }
