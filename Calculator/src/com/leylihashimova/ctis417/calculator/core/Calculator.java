@@ -1,7 +1,7 @@
 package com.leylihashimova.ctis417.calculator.core;
 
 import com.leylihashimova.ctis417.calculator.io.InputObserver;
-import com.leylihashimova.ctis417.calculator.operations.Operation;
+import com.leylihashimova.ctis417.calculator.operations.*;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -76,24 +76,21 @@ public class Calculator extends InputObserver {
 
     @Override
     public void updateInput(String input) {
-        if (input == null) {
-            return;
-        }
-
         var cleaned = input.trim();
 
+        // Ignore empty input.
         if (cleaned.equals("")) {
             return;
         }
 
         try {
-            processInput(cleaned);
+            handleInput(cleaned);
         } catch (CalculatorException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void processInput(String cleaned) throws CalculatorException {
+    private void handleInput(String cleaned) throws CalculatorException {
         if (cleaned.equals("undo")) {
             if (history.empty()) {
                 throw new CalculatorException("You need to perform an operation before undoing.");
@@ -101,7 +98,8 @@ public class Calculator extends InputObserver {
 
             undoLastOperation();
         } else {
-            var operation = Operation.create(cleaned);
+            var expression = ExpressionParser.getInstance().parseInput(cleaned);
+            var operation = Operation.create(expression);
             operation.calculate();
         }
     }

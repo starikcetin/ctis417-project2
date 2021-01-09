@@ -1,7 +1,6 @@
 package com.leylihashimova.ctis417.calculator.operations;
 
 import com.leylihashimova.ctis417.calculator.core.Calculator;
-import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
 public class SubtractionPerformerOperationAdapter extends Operation {
     private final SubtractionPerformer subtractionPerformer;
@@ -12,7 +11,7 @@ public class SubtractionPerformerOperationAdapter extends Operation {
     }
 
     @Override
-    public void calculate() throws CalculatorException {
+    public void calculate() {
         var left = Calculator.getInstance().getLastResult();
         var result = subtractionPerformer.perform(left, operand);
         Calculator.getInstance().setLastResult(result);
@@ -20,7 +19,7 @@ public class SubtractionPerformerOperationAdapter extends Operation {
     }
 
     @Override
-    public void undo() throws CalculatorException {
+    public void undo() {
         var left = Calculator.getInstance().getLastResult();
         var result = subtractionPerformer.performInverse(left, operand);
         Calculator.getInstance().setLastResult(result);
