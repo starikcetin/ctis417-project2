@@ -1,4 +1,7 @@
-package com.leylihashimova.ctis417.calculator;
+package com.leylihashimova.ctis417.calculator.operations;
+
+import com.leylihashimova.ctis417.calculator.core.Calculator;
+import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
 public class DivisionOperation extends Operation {
     protected DivisionOperation(double operand) {
@@ -21,4 +24,3 @@ public class DivisionOperation extends Operation {
         Calculator.getInstance().setLastOperation(null);
     }
 }
-

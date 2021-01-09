@@ -1,7 +1,5 @@
 package com.leylihashimova.ctis417.calculator.io;
 
-import com.leylihashimova.ctis417.calculator.CalculatorException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

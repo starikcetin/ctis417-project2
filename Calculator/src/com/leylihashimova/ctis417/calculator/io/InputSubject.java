@@ -1,9 +1,6 @@
 package com.leylihashimova.ctis417.calculator.io;
 
-import com.leylihashimova.ctis417.calculator.CalculatorException;
-
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class InputSubject {
     private final ArrayList<InputObserver> observers = new ArrayList<>();

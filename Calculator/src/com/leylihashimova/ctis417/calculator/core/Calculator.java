@@ -1,5 +1,6 @@
-package com.leylihashimova.ctis417.calculator;
+package com.leylihashimova.ctis417.calculator.core;
 
+import com.leylihashimova.ctis417.calculator.operations.Operation;
 import com.leylihashimova.ctis417.calculator.io.InputObserver;
 import com.leylihashimova.ctis417.calculator.io.OutputEventBus;
 

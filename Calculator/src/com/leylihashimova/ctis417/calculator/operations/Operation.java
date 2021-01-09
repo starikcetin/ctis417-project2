@@ -1,4 +1,6 @@
-package com.leylihashimova.ctis417.calculator;
+package com.leylihashimova.ctis417.calculator.operations;
+
+import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
 import java.util.Arrays;
 
