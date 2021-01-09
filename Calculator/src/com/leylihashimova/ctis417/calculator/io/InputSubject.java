@@ -15,7 +15,7 @@ public class InputSubject {
 
     protected void notifyObservers(String input) {
         for (var obs : observers) {
-            if(obs != null) {
+            if (obs != null) {
                 obs.updateInput(input);
             }
         }

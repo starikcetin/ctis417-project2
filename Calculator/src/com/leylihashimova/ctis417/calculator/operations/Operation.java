@@ -18,7 +18,7 @@ public abstract class Operation {
         String[] tokensRaw = statement.split(" ");
         String[] tokens = Arrays.stream(tokensRaw).filter(t -> t != null && !t.equals("")).toArray(String[]::new);
 
-        if(tokens.length < 2) {
+        if (tokens.length < 2) {
             throw new CalculatorException("Not enough tokens, make sure you put at least one space in between operator and operand.");
         }
 
@@ -35,7 +35,7 @@ public abstract class Operation {
             case "*":
                 var operation = new MultiplicationOperation(operand);
 
-                if(operand == 0) {
+                if (operand == 0) {
                     return new RestoreStateOnUndoOperationDecorator(operand, operation, Calculator.getInstance().getLastResult());
                 } else {
                     return operation;
@@ -48,5 +48,6 @@ public abstract class Operation {
     }
 
     public abstract void calculate() throws CalculatorException;
+
     public abstract void undo() throws CalculatorException;
 }

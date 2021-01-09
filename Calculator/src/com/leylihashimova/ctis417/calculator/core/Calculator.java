@@ -1,16 +1,28 @@
 package com.leylihashimova.ctis417.calculator.core;
 
-import com.leylihashimova.ctis417.calculator.operations.Operation;
 import com.leylihashimova.ctis417.calculator.io.InputObserver;
+import com.leylihashimova.ctis417.calculator.operations.Operation;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Stack;
 
 public class Calculator extends InputObserver {
+    private static Calculator instance;
     private double lastResult = 0;
-    private Stack<Operation> history = new Stack<>();
-    private NumberFormat doubleFormatter = new DecimalFormat("#0.00");
+    private final Stack<Operation> history = new Stack<>();
+    private final NumberFormat doubleFormatter = new DecimalFormat("#0.00");
+
+    private Calculator() {
+    }
+
+    public synchronized static Calculator getInstance() {
+        if (instance == null) {
+            instance = new Calculator();
+        }
+
+        return instance;
+    }
 
     public double getLastResult() {
         return lastResult;
@@ -34,18 +46,6 @@ public class Calculator extends InputObserver {
         history.pop();
     }
 
-    private static Calculator instance;
-
-    public synchronized static Calculator getInstance() {
-        if (instance == null) {
-            instance = new Calculator();
-        }
-
-        return instance;
-    }
-
-    private Calculator() {}
-
     public void add(double number) {
         lastResult += number;
         output();
@@ -62,7 +62,7 @@ public class Calculator extends InputObserver {
     }
 
     public void divide(double number) throws CalculatorException {
-        if(number == 0) {
+        if (number == 0) {
             throw new CalculatorException("Division cannot take 0 as operand.");
         }
 
@@ -76,13 +76,13 @@ public class Calculator extends InputObserver {
 
     @Override
     public void updateInput(String input) {
-        if(input == null) {
+        if (input == null) {
             return;
         }
 
         var cleaned = input.trim();
 
-        if(cleaned.equals("")) {
+        if (cleaned.equals("")) {
             return;
         }
 
@@ -94,8 +94,8 @@ public class Calculator extends InputObserver {
     }
 
     private void processInput(String cleaned) throws CalculatorException {
-        if(cleaned.equals("undo")) {
-            if(history.empty()) {
+        if (cleaned.equals("undo")) {
+            if (history.empty()) {
                 throw new CalculatorException("You need to perform an operation before undoing.");
             }
 
