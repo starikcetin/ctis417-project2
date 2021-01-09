@@ -2,7 +2,6 @@ package com.leylihashimova.ctis417.calculator.core;
 
 import com.leylihashimova.ctis417.calculator.operations.Operation;
 import com.leylihashimova.ctis417.calculator.io.InputObserver;
-import com.leylihashimova.ctis417.calculator.io.OutputEventBus;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -72,7 +71,7 @@ public class Calculator extends InputObserver {
     }
 
     private void output() {
-        OutputEventBus.getInstance().emit(" = " + doubleFormatter.format(lastResult));
+        System.out.println(" = " + doubleFormatter.format(lastResult));
     }
 
     @Override
