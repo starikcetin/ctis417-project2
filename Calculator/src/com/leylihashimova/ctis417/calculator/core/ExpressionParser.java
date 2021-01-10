@@ -22,8 +22,20 @@ public class ExpressionParser {
     }
 
     private String[] tokenizeInput(String input) throws CalculatorException {
-        String[] rawTokens = input.split("");
-        String[] sanitizedTokens = sanitizeTokens(rawTokens);
+        var rawTokens = input.split(" ");
+        var sanitizedTokens = sanitizeTokens(rawTokens);
+
+        return switch (sanitizedTokens.length) {
+            case 0 -> throw new CalculatorException("Not enough tokens.");
+            case 1 -> tokenizeForChars(sanitizedTokens[0]);
+            case 2 -> sanitizedTokens;
+            default -> throw new CalculatorException("Too many tokens.");
+        };
+    }
+
+    private String[] tokenizeForChars(String word) throws CalculatorException {
+        var rawTokens = word.split("");
+        var sanitizedTokens = sanitizeTokens(rawTokens);
 
         if (sanitizedTokens.length < 2) {
             throw new CalculatorException("Not enough tokens.");
