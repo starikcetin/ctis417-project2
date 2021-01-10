@@ -34,8 +34,14 @@ public class ExpressionParser {
     }
 
     private String[] tokenizeNoSpace(String word) throws CalculatorException {
-        var firstChar = word.substring(0, 1);
-        var rest = word.substring(1);
+        var trimmedWord = word.trim();
+
+        if(trimmedWord.length() < 2) {
+            throw new CalculatorException("Not enough tokens (" + trimmedWord.length() + " tokens)");
+        }
+
+        var firstChar = trimmedWord.substring(0, 1);
+        var rest = trimmedWord.substring(1);
 
         return Arrays.asList(firstChar, rest).toArray(String[]::new);
     }
