@@ -38,7 +38,8 @@ public class ExpressionParser {
 
     private String[] sanitizeTokens(String[] tokens) {
         return Arrays.stream(tokens)
-                .filter(t -> t != null && !t.equals("") && !t.equals(" "))
+                .map(String::trim)
+                .filter(t -> !t.isBlank())
                 .toArray(String[]::new);
     }
 
