@@ -27,25 +27,17 @@ public class ExpressionParser {
 
         return switch (sanitizedTokens.length) {
             case 0 -> throw new CalculatorException("Not enough tokens.");
-            case 1 -> tokenizeForChars(sanitizedTokens[0]);
+            case 1 -> tokenizeNoSpace(sanitizedTokens[0]);
             case 2 -> sanitizedTokens;
             default -> throw new CalculatorException("Too many tokens.");
         };
     }
 
-    private String[] tokenizeForChars(String word) throws CalculatorException {
-        var rawTokens = word.split("");
-        var sanitizedTokens = sanitizeTokens(rawTokens);
+    private String[] tokenizeNoSpace(String word) throws CalculatorException {
+        var firstChar = word.substring(0, 1);
+        var rest = word.substring(1);
 
-        if (sanitizedTokens.length < 2) {
-            throw new CalculatorException("Not enough tokens.");
-        }
-
-        if (sanitizedTokens.length > 2) {
-            throw new CalculatorException("Too many tokens.");
-        }
-
-        return sanitizedTokens;
+        return Arrays.asList(firstChar, rest).toArray(String[]::new);
     }
 
     private String[] sanitizeTokens(String[] tokens) {
