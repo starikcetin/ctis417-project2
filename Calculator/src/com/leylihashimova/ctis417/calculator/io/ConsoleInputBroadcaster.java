@@ -5,16 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ConsoleInputBroadcaster extends InputSubject {
-    public void begin() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        String input;
+    public void begin() {
+        var br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.print("> ");
 
-        while ((input = br.readLine()) != null) {
+        br.lines().forEach(input -> {
             notifyObservers(input);
             System.out.print("> ");
-        }
+        });
     }
 }
