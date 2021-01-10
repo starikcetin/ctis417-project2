@@ -26,10 +26,10 @@ public class ExpressionParser {
         var sanitizedTokens = sanitizeTokens(rawTokens);
 
         return switch (sanitizedTokens.length) {
-            case 0 -> throw new CalculatorException("Not enough tokens.");
+            case 0 -> throw new CalculatorException("Not enough tokens (" + sanitizedTokens.length + " tokens)");
             case 1 -> tokenizeNoSpace(sanitizedTokens[0]);
             case 2 -> sanitizedTokens;
-            default -> throw new CalculatorException("Too many tokens.");
+            default -> throw new CalculatorException("Too many tokens (" + sanitizedTokens.length + " tokens)");
         };
     }
 
@@ -69,15 +69,15 @@ public class ExpressionParser {
             case "-" -> Operator.Subtract;
             case "*" -> Operator.Multiply;
             case "/" -> Operator.Divide;
-            default -> throw new CalculatorException("Operator not supported.");
+            default -> throw new CalculatorException("Operator not supported (" + operator + ")");
         };
     }
 
     private double parseOperand(String operand) throws CalculatorException {
         try {
             return Double.parseDouble(operand);
-        } catch (Exception e) {
-            throw new CalculatorException("Malformed operand. (" + e.getMessage() + ")");
+        } catch (NumberFormatException e) {
+            throw new CalculatorException("Malformed operand (" + operand + ")");
         }
     }
 }

@@ -44,14 +44,14 @@ public class Calculator extends InputObserver {
 
     public void divide(double number) throws CalculatorException {
         if (number == 0) {
-            throw new CalculatorException("Division cannot take 0 as operand.");
+            throw new CalculatorException("Division cannot take 0 as operand");
         }
 
         lastResult /= number;
     }
 
     private void output() {
-        System.out.println(" = " + doubleFormatter.format(lastResult));
+        System.out.println("= " + doubleFormatter.format(lastResult));
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Calculator extends InputObserver {
         try {
             handleInput(cleaned);
         } catch (CalculatorException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
 
         output();
@@ -75,7 +75,7 @@ public class Calculator extends InputObserver {
     private void handleInput(String cleaned) throws CalculatorException {
         if (cleaned.equals("undo")) {
             if (history.empty()) {
-                throw new CalculatorException("You need to perform an operation before undoing.");
+                throw new CalculatorException("Nothing to undo");
             }
 
             undoLastOperation();
