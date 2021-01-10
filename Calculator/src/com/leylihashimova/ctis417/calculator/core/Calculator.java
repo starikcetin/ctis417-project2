@@ -19,7 +19,6 @@ public class Calculator extends InputObserver {
 
     public void setLastResult(double lastResult) {
         this.lastResult = lastResult;
-        output();
     }
 
     public void addToHistory(Operation operation) {
@@ -33,17 +32,14 @@ public class Calculator extends InputObserver {
 
     public void add(double number) {
         lastResult += number;
-        output();
     }
 
     public void subtract(double number) {
         lastResult -= number;
-        output();
     }
 
     public void multiply(double number) {
         lastResult *= number;
-        output();
     }
 
     public void divide(double number) throws CalculatorException {
@@ -52,7 +48,6 @@ public class Calculator extends InputObserver {
         }
 
         lastResult /= number;
-        output();
     }
 
     private void output() {
@@ -73,6 +68,8 @@ public class Calculator extends InputObserver {
         } catch (CalculatorException e) {
             System.out.println(e.getMessage());
         }
+
+        output();
     }
 
     private void handleInput(String cleaned) throws CalculatorException {
