@@ -15,7 +15,6 @@ public class DivisionOperation extends Operation {
     @Override
     public void calculate() throws CalculatorException {
         calculator.divide(operand);
-        calculator.addToHistory(this);
     }
 
     @Override

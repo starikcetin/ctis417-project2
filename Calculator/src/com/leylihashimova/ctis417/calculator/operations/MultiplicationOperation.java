@@ -15,7 +15,6 @@ public class MultiplicationOperation extends Operation {
     @Override
     public void calculate() {
         calculator.multiply(operand);
-        calculator.addToHistory(this);
     }
 
     @Override

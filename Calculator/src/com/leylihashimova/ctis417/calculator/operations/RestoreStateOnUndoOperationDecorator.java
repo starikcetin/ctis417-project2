@@ -17,8 +17,6 @@ public class RestoreStateOnUndoOperationDecorator extends Operation {
     @Override
     public void calculate() throws CalculatorException {
         operation.calculate();
-        calculator.ignoreLastOperationFromHistory();
-        calculator.addToHistory(this);
     }
 
     @Override

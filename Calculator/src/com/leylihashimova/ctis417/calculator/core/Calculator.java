@@ -31,10 +31,6 @@ public class Calculator extends InputObserver {
         op.undo();
     }
 
-    public void ignoreLastOperationFromHistory() {
-        history.pop();
-    }
-
     public void add(double number) {
         lastResult += number;
         output();
@@ -90,6 +86,7 @@ public class Calculator extends InputObserver {
             var expression = ExpressionParser.getInstance().parseInput(cleaned);
             var operation = Operation.create(expression, this);
             operation.calculate();
+            addToHistory(operation);
         }
     }
 }

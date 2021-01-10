@@ -14,7 +14,6 @@ public class AdditionOperation extends Operation {
     @Override
     public void calculate() {
         calculator.add(operand);
-        calculator.addToHistory(this);
     }
 
     @Override
