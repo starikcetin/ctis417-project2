@@ -2,16 +2,23 @@ package com.leylihashimova.ctis417.calculator.core;
 
 import com.leylihashimova.ctis417.calculator.io.InputObserver;
 import com.leylihashimova.ctis417.calculator.operations.Operation;
+import com.leylihashimova.ctis417.calculator.operations.factories.OperationFactory;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Map;
 import java.util.Stack;
 
 public class Calculator extends InputObserver {
     private static Calculator instance;
     private final Stack<Operation> history = new Stack<>();
     private final NumberFormat doubleFormatter = new DecimalFormat("#0.00");
+    private final Map<Operator, OperationFactory> operationFactoryMap;
     private double lastResult = 0;
+
+    public Calculator(Map<Operator, OperationFactory> operationFactoryMap) {
+        this.operationFactoryMap = operationFactoryMap;
+    }
 
     public double getLastResult() {
         return lastResult;
@@ -81,9 +88,19 @@ public class Calculator extends InputObserver {
             undoLastOperation();
         } else {
             var expression = ExpressionParser.getInstance().parseInput(cleaned);
-            var operation = Operation.create(expression, this);
+            var operation = createOperation(expression);
             operation.calculate();
             addToHistory(operation);
         }
+    }
+
+    private Operation createOperation(Expression expression) throws CalculatorException {
+        var factory = operationFactoryMap.get(expression.operator);
+
+        if(factory == null) {
+            throw new CalculatorException("Operator not supported: " + expression.operator);
+        }
+
+        return factory.create(this, expression.operand);
     }
 }

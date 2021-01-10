@@ -7,7 +7,7 @@ public class SubtractionPerformerOperationAdapter extends Operation {
     private final Calculator calculator;
     private final double operand;
 
-    protected SubtractionPerformerOperationAdapter(SubtractionPerformer subtractionPerformer, Calculator calculator, double operand) {
+    public SubtractionPerformerOperationAdapter(SubtractionPerformer subtractionPerformer, Calculator calculator, double operand) {
         this.subtractionPerformer = subtractionPerformer;
         this.calculator = calculator;
         this.operand = operand;

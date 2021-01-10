@@ -7,7 +7,7 @@ public class DivisionOperation extends Operation {
     private final Calculator calculator;
     private final double operand;
 
-    protected DivisionOperation(Calculator calculator, double operand) {
+    public DivisionOperation(Calculator calculator, double operand) {
         this.calculator = calculator;
         this.operand = operand;
     }

@@ -1,14 +1,27 @@
 package com.leylihashimova.ctis417.calculator;
 
 import com.leylihashimova.ctis417.calculator.core.Calculator;
+import com.leylihashimova.ctis417.calculator.core.Operator;
 import com.leylihashimova.ctis417.calculator.io.ConsoleInputBroadcaster;
+import com.leylihashimova.ctis417.calculator.operations.factories.AdditionOperationFactory;
+import com.leylihashimova.ctis417.calculator.operations.factories.DivisionOperationFactory;
+import com.leylihashimova.ctis417.calculator.operations.factories.MultiplicationOperationFactory;
+import com.leylihashimova.ctis417.calculator.operations.factories.SubtractionOperationFactory;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        var calculator = new Calculator();
+        var operationFactoryMap = Map.of(
+                Operator.Add, new AdditionOperationFactory(),
+                Operator.Subtract, new SubtractionOperationFactory(),
+                Operator.Divide, new DivisionOperationFactory(),
+                Operator.Multiply, new MultiplicationOperationFactory()
+        );
+
+        var calculator = new Calculator(operationFactoryMap);
 
         var consoleInputBroadcaster = new ConsoleInputBroadcaster();
         consoleInputBroadcaster.registerObserver(calculator);

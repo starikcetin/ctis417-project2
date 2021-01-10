@@ -7,7 +7,7 @@ public class MultiplicationOperation extends Operation {
     private final Calculator calculator;
     private final double operand;
 
-    protected MultiplicationOperation(Calculator calculator, double operand) {
+    public MultiplicationOperation(Calculator calculator, double operand) {
         this.calculator = calculator;
         this.operand = operand;
     }
