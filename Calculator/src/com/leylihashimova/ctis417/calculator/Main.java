@@ -8,12 +8,11 @@ import com.leylihashimova.ctis417.calculator.operations.factories.DivisionOperat
 import com.leylihashimova.ctis417.calculator.operations.factories.MultiplicationOperationFactory;
 import com.leylihashimova.ctis417.calculator.operations.factories.SubtractionOperationFactory;
 
-import java.io.IOException;
 import java.util.Map;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         var operationFactoryMap = Map.of(
                 Operator.Add, new AdditionOperationFactory(),
                 Operator.Subtract, new SubtractionOperationFactory(),
@@ -25,6 +24,16 @@ public class Main {
 
         var consoleInputBroadcaster = new ConsoleInputBroadcaster();
         consoleInputBroadcaster.registerObserver(calculator);
+
+
+        System.out.println("Simple Calculator");
+        System.out.println("Possible commands:");
+        System.out.println("1. undo");
+        System.out.println("2. operator operand");
+        System.out.println("Expression examples: +2   |   - 5.4   |   * 45.67   |   /5");
+        System.out.println();
+
+
         consoleInputBroadcaster.begin();
 
         // This can be called later on in the lifecycle for cleanup:
