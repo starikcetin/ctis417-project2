@@ -25,14 +25,13 @@ public class Main {
         var consoleInputBroadcaster = new ConsoleInputBroadcaster();
         consoleInputBroadcaster.registerObserver(calculator);
 
-
+        System.out.println();
         System.out.println("Simple Calculator");
         System.out.println("Possible commands:");
         System.out.println("1. undo");
         System.out.println("2. operator operand");
         System.out.println("Expression examples: +2   |   - 5.4   |   * 45.67   |   /5");
         System.out.println();
-
 
         consoleInputBroadcaster.begin();
 
