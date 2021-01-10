@@ -2,7 +2,7 @@ package com.leylihashimova.ctis417.calculator;
 
 import com.leylihashimova.ctis417.calculator.core.Calculator;
 import com.leylihashimova.ctis417.calculator.core.Operator;
-import com.leylihashimova.ctis417.calculator.io.ConsoleInputBroadcaster;
+import com.leylihashimova.ctis417.calculator.input.ConsoleInputBroadcaster;
 import com.leylihashimova.ctis417.calculator.operations.factories.AdditionOperationFactory;
 import com.leylihashimova.ctis417.calculator.operations.factories.DivisionOperationFactory;
 import com.leylihashimova.ctis417.calculator.operations.factories.MultiplicationOperationFactory;

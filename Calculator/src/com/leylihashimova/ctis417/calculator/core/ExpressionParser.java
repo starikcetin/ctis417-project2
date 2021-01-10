@@ -36,7 +36,7 @@ public class ExpressionParser {
     private String[] tokenizeNoSpace(String word) throws CalculatorException {
         var trimmedWord = word.trim();
 
-        if(trimmedWord.length() < 2) {
+        if (trimmedWord.length() < 2) {
             throw new CalculatorException("Not enough tokens (" + trimmedWord.length() + " tokens)");
         }
 

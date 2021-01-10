@@ -3,7 +3,7 @@ package com.leylihashimova.ctis417.calculator.operations;
 import com.leylihashimova.ctis417.calculator.core.Calculator;
 import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
-public class MultiplicationOperation extends Operation {
+public class MultiplicationOperation implements Operation {
     private final Calculator calculator;
     private final double operand;
 

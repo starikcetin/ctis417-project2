@@ -1,7 +1,6 @@
-package com.leylihashimova.ctis417.calculator.io;
+package com.leylihashimova.ctis417.calculator.input;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ConsoleInputBroadcaster extends InputSubject {

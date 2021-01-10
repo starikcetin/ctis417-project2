@@ -1,4 +1,4 @@
-package com.leylihashimova.ctis417.calculator.io;
+package com.leylihashimova.ctis417.calculator.input;
 
 import java.util.ArrayList;
 

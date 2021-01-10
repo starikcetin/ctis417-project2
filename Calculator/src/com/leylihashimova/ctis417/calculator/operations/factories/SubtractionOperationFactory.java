@@ -5,7 +5,7 @@ import com.leylihashimova.ctis417.calculator.operations.Operation;
 import com.leylihashimova.ctis417.calculator.operations.SubtractionPerformer;
 import com.leylihashimova.ctis417.calculator.operations.SubtractionPerformerOperationAdapter;
 
-public class SubtractionOperationFactory extends OperationFactory {
+public class SubtractionOperationFactory implements OperationFactory {
     @Override
     public Operation create(Calculator calculator, double operand) {
         var subtractionPerformer = new SubtractionPerformer();

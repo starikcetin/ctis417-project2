@@ -2,7 +2,7 @@ package com.leylihashimova.ctis417.calculator.operations;
 
 import com.leylihashimova.ctis417.calculator.core.Calculator;
 
-public class SubtractionPerformerOperationAdapter extends Operation {
+public class SubtractionPerformerOperationAdapter implements Operation {
     private final SubtractionPerformer subtractionPerformer;
     private final Calculator calculator;
     private final double operand;

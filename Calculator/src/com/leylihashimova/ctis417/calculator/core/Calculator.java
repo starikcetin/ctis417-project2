@@ -1,6 +1,6 @@
 package com.leylihashimova.ctis417.calculator.core;
 
-import com.leylihashimova.ctis417.calculator.io.InputObserver;
+import com.leylihashimova.ctis417.calculator.input.InputObserver;
 import com.leylihashimova.ctis417.calculator.operations.Operation;
 import com.leylihashimova.ctis417.calculator.operations.factories.OperationFactory;
 
@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Stack;
 
 public class Calculator extends InputObserver {
-    private static Calculator instance;
     private final Stack<Operation> history = new Stack<>();
     private final NumberFormat doubleFormatter = new DecimalFormat("#0.00");
     private final Map<Operator, OperationFactory> operationFactoryMap;
@@ -97,7 +96,7 @@ public class Calculator extends InputObserver {
     private Operation createOperation(Expression expression) throws CalculatorException {
         var factory = operationFactoryMap.get(expression.operator);
 
-        if(factory == null) {
+        if (factory == null) {
             throw new CalculatorException("Operator not supported: " + expression.operator);
         }
 

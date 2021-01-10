@@ -3,12 +3,12 @@ package com.leylihashimova.ctis417.calculator.operations;
 import com.leylihashimova.ctis417.calculator.core.Calculator;
 import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
-public class RestoreStateOnUndoOperationDecorator extends Operation {
+public class OperationRestoreStateOnUndoDecorator implements Operation {
     private final Operation operation;
     private final Calculator calculator;
     private final double resultBefore;
 
-    public RestoreStateOnUndoOperationDecorator(Operation operation, Calculator calculator) {
+    public OperationRestoreStateOnUndoDecorator(Operation operation, Calculator calculator) {
         this.operation = operation;
         this.calculator = calculator;
         this.resultBefore = calculator.getLastResult();
