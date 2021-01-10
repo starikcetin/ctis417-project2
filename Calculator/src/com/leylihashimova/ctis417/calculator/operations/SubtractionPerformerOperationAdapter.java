@@ -4,25 +4,27 @@ import com.leylihashimova.ctis417.calculator.core.Calculator;
 
 public class SubtractionPerformerOperationAdapter extends Operation {
     private final SubtractionPerformer subtractionPerformer;
+    private final Calculator calculator;
     private final double operand;
 
-    protected SubtractionPerformerOperationAdapter(SubtractionPerformer subtractionPerformer, double operand) {
+    protected SubtractionPerformerOperationAdapter(SubtractionPerformer subtractionPerformer, Calculator calculator, double operand) {
         this.subtractionPerformer = subtractionPerformer;
+        this.calculator = calculator;
         this.operand = operand;
     }
 
     @Override
     public void calculate() {
-        var left = Calculator.getInstance().getLastResult();
+        var left = calculator.getLastResult();
         var result = subtractionPerformer.perform(left, operand);
-        Calculator.getInstance().setLastResult(result);
-        Calculator.getInstance().addToHistory(this);
+        calculator.setLastResult(result);
+        calculator.addToHistory(this);
     }
 
     @Override
     public void undo() {
-        var left = Calculator.getInstance().getLastResult();
+        var left = calculator.getLastResult();
         var result = subtractionPerformer.performInverse(left, operand);
-        Calculator.getInstance().setLastResult(result);
+        calculator.setLastResult(result);
     }
 }

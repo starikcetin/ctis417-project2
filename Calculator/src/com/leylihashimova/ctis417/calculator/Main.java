@@ -8,9 +8,9 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        var consoleInputBroadcaster = new ConsoleInputBroadcaster();
-        var calculator = Calculator.getInstance();
+        var calculator = new Calculator();
 
+        var consoleInputBroadcaster = new ConsoleInputBroadcaster();
         consoleInputBroadcaster.registerObserver(calculator);
         consoleInputBroadcaster.begin();
 

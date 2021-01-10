@@ -5,24 +5,24 @@ import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 import com.leylihashimova.ctis417.calculator.core.Expression;
 
 public abstract class Operation {
-    public static Operation create(Expression expression) throws CalculatorException {
+    public static Operation create(Expression expression, Calculator calculator) throws CalculatorException {
         switch (expression.operator) {
             case Add:
-                return new AdditionOperation(expression.operand);
+                return new AdditionOperation(calculator, expression.operand);
 
             case Subtract:
                 var subtractionPerformer = new SubtractionPerformer();
-                return new SubtractionPerformerOperationAdapter(subtractionPerformer, expression.operand);
+                return new SubtractionPerformerOperationAdapter(subtractionPerformer, calculator, expression.operand);
 
             case Multiply:
-                var operation = new MultiplicationOperation(expression.operand);
+                var operation = new MultiplicationOperation(calculator, expression.operand);
 
                 return expression.operand == 0
-                        ? new RestoreStateOnUndoOperationDecorator(operation, Calculator.getInstance().getLastResult())
+                        ? new RestoreStateOnUndoOperationDecorator(operation, calculator)
                         : operation;
 
             case Divide:
-                return new DivisionOperation(expression.operand);
+                return new DivisionOperation(calculator, expression.operand);
 
             default:
                 throw new CalculatorException("Operator not supported: " + expression.operator);

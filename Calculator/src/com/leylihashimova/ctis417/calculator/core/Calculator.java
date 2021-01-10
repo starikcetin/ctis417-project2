@@ -13,17 +13,6 @@ public class Calculator extends InputObserver {
     private final NumberFormat doubleFormatter = new DecimalFormat("#0.00");
     private double lastResult = 0;
 
-    private Calculator() {
-    }
-
-    public synchronized static Calculator getInstance() {
-        if (instance == null) {
-            instance = new Calculator();
-        }
-
-        return instance;
-    }
-
     public double getLastResult() {
         return lastResult;
     }
@@ -99,7 +88,7 @@ public class Calculator extends InputObserver {
             undoLastOperation();
         } else {
             var expression = ExpressionParser.getInstance().parseInput(cleaned);
-            var operation = Operation.create(expression);
+            var operation = Operation.create(expression, this);
             operation.calculate();
         }
     }
