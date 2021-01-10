@@ -5,12 +5,6 @@ import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 import com.leylihashimova.ctis417.calculator.core.Expression;
 
 public abstract class Operation {
-    protected final double operand;
-
-    protected Operation(double operand) {
-        this.operand = operand;
-    }
-
     public static Operation create(Expression expression) throws CalculatorException {
         switch (expression.operator) {
             case Add:
@@ -24,7 +18,7 @@ public abstract class Operation {
                 var operation = new MultiplicationOperation(expression.operand);
 
                 return expression.operand == 0
-                        ? new RestoreStateOnUndoOperationDecorator(expression.operand, operation, Calculator.getInstance().getLastResult())
+                        ? new RestoreStateOnUndoOperationDecorator(operation, Calculator.getInstance().getLastResult())
                         : operation;
 
             case Divide:

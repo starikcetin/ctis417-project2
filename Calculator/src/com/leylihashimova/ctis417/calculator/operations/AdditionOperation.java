@@ -3,8 +3,10 @@ package com.leylihashimova.ctis417.calculator.operations;
 import com.leylihashimova.ctis417.calculator.core.Calculator;
 
 public class AdditionOperation extends Operation {
+    private final double operand;
+
     protected AdditionOperation(double operand) {
-        super(operand);
+        this.operand = operand;
     }
 
     @Override

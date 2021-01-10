@@ -4,10 +4,11 @@ import com.leylihashimova.ctis417.calculator.core.Calculator;
 
 public class SubtractionPerformerOperationAdapter extends Operation {
     private final SubtractionPerformer subtractionPerformer;
+    private final double operand;
 
     protected SubtractionPerformerOperationAdapter(SubtractionPerformer subtractionPerformer, double operand) {
-        super(operand);
         this.subtractionPerformer = subtractionPerformer;
+        this.operand = operand;
     }
 
     @Override

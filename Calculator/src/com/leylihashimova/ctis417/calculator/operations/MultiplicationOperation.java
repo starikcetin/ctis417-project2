@@ -4,8 +4,10 @@ import com.leylihashimova.ctis417.calculator.core.Calculator;
 import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
 public class MultiplicationOperation extends Operation {
+    private final double operand;
+
     protected MultiplicationOperation(double operand) {
-        super(operand);
+        this.operand = operand;
     }
 
     @Override

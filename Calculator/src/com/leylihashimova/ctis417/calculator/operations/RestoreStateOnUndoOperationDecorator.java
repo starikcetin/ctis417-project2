@@ -7,8 +7,7 @@ public class RestoreStateOnUndoOperationDecorator extends Operation {
     private final Operation operation;
     private final double resultBefore;
 
-    protected RestoreStateOnUndoOperationDecorator(double operand, Operation operation, double resultBefore) {
-        super(operand);
+    protected RestoreStateOnUndoOperationDecorator(Operation operation, double resultBefore) {
         this.operation = operation;
         this.resultBefore = resultBefore;
     }
