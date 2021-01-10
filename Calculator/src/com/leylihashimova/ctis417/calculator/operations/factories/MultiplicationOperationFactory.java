@@ -5,7 +5,7 @@ import com.leylihashimova.ctis417.calculator.operations.MultiplicationOperation;
 import com.leylihashimova.ctis417.calculator.operations.Operation;
 import com.leylihashimova.ctis417.calculator.operations.OperationRestoreStateOnUndoDecorator;
 
-public class MultiplicationOperationFactory implements OperationFactory {
+public class MultiplicationOperationFactory extends OperationFactory {
     @Override
     public Operation create(Calculator calculator, double operand) {
         var operation = new MultiplicationOperation(calculator, operand);

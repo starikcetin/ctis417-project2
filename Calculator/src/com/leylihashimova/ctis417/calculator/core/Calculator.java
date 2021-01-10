@@ -27,15 +27,6 @@ public class Calculator extends InputObserver {
         this.lastResult = lastResult;
     }
 
-    public void addToHistory(Operation operation) {
-        history.push(operation);
-    }
-
-    private void undoLastOperation() throws CalculatorException {
-        var op = history.pop();
-        op.undo();
-    }
-
     public void add(double number) {
         lastResult += number;
     }
@@ -56,10 +47,6 @@ public class Calculator extends InputObserver {
         lastResult /= number;
     }
 
-    private void output() {
-        System.out.println("= " + doubleFormatter.format(lastResult));
-    }
-
     @Override
     public void updateInput(String input) {
         var cleaned = input.trim();
@@ -76,6 +63,19 @@ public class Calculator extends InputObserver {
         }
 
         output();
+    }
+
+    private void addToHistory(Operation operation) {
+        history.push(operation);
+    }
+
+    private void undoLastOperation() throws CalculatorException {
+        var op = history.pop();
+        op.undo();
+    }
+
+    private void output() {
+        System.out.println("= " + doubleFormatter.format(lastResult));
     }
 
     private void handleInput(String cleaned) throws CalculatorException {

@@ -2,8 +2,8 @@ package com.leylihashimova.ctis417.calculator.operations;
 
 import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
-public interface Operation {
-    void calculate() throws CalculatorException;
+public abstract class Operation {
+    public abstract void calculate() throws CalculatorException;
 
-    void undo() throws CalculatorException;
+    public abstract void undo() throws CalculatorException;
 }

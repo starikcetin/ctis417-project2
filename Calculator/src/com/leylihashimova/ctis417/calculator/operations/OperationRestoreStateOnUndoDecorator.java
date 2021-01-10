@@ -3,7 +3,7 @@ package com.leylihashimova.ctis417.calculator.operations;
 import com.leylihashimova.ctis417.calculator.core.Calculator;
 import com.leylihashimova.ctis417.calculator.core.CalculatorException;
 
-public class OperationRestoreStateOnUndoDecorator implements Operation {
+public class OperationRestoreStateOnUndoDecorator extends Operation {
     private final Operation operation;
     private final Calculator calculator;
     private final double resultBefore;

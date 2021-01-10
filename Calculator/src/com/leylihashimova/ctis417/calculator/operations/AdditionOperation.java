@@ -2,7 +2,7 @@ package com.leylihashimova.ctis417.calculator.operations;
 
 import com.leylihashimova.ctis417.calculator.core.Calculator;
 
-public class AdditionOperation implements Operation {
+public class AdditionOperation extends Operation {
     private final Calculator calculator;
     private final double operand;
 
